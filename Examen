@@ -1,0 +1,742 @@
+CREATE TABLE ALUMNOS(
+ID NUMBER(20),
+PRIMARY KEY (id),
+MATRICULA NUMBER (30) UNIQUE,
+NOMBRE VARCHAR2 (30) NOT NULL,
+APELLIDO_P VARCHAR2 (30),
+APELLIDO_M VARCHAR2 (30),
+CARRERA VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+SEMESTRE NUMBER (30),
+EDIFICIO VARCHAR2 (30),
+PROMEDIO_PASADO NUMBER (30)
+CHECK (PROMEDIO_PASADO<=100)
+); /* CREAMOS UNA TABLA DE ALUMNOS CON LOS DATOS SOLICITADOS*/
+
+select * from ALUMNOS;
+delete from ALUMNOS;
+/*PODEMOS SELECCIONAR VER LA TABLA O BORRARLA*/
+
+ create or replace procedure IA
+(M_ID IN NUMBER DEFAULT 0, M_MATRICULA IN NUMBER DEFAULT 0, M_NOMBRE IN VARCHAR2 DEFAULT 'NOMBRE', M_APELLIDO_P IN VARCHAR2 DEFAULT 'APELLIDO_P', M_APELLIDO_M IN VARCHAR2 DEFAULT 'APELLIDO_M',
+ M_CARRERA IN VARCHAR2 DEFAULT 'CARRERA ', M_GRUPO IN VARCHAR2 DEFAULT '0000', M_SEMESTRE IN NUMBER DEFAULT 1, A_EDIFICIO IN VARCHAR2 DEFAULT '--', M_PROMEDIO_PASADO IN NUMBER DEFAULT 0)
+ as 
+ begin 
+ insert into ALUMNOS values (M_ID, M_MATRICULA, M_NOMBRE, M_APELLIDO_P, M_APELLIDO_M, M_CARRERA, M_GRUPO, M_SEMESTRE, M_EDIFICIO, M_PROMEDIO_PASADO);
+ end;
+/*AQUI CREAMOS UNA FUNCION CON LOS DATOS QUE SOLICITAMOS*/
+
+/*AQUI EMPEZAMOS A INGRESAR LOS DATOS DE LOS 90 ALUMNOS*/
+execute IA (1, 239010023, 'Andy Alberto ', 'Sarmiento', 'Astudillo', 'AUTOMOTRICES', '1SA11', 1, 'E', 87);
+execute IA (2, 239010035, 'Israel', 'Legorreta', 'Dominguez', 'AUTOMOTRICES', '1SA11', 1, 'E', 87);
+execute IA (3, 224020038, 'Josué Azdhriel', 'Morales', 'Perez', 'AUTOMOTRICES', '2SA11', 2, 'D', 87);
+execute IA (4, 229020029, 'Bruno', 'Esquivel', 'Bautista', 'AUTOMOTRICES', '2SA11', 2, 'D', 82);
+execute IA (5, 219020058, 'Armando', 'Mercado', 'Lopez', 'AUTOMOTRICES', '4SA11', 4, 'E', 82);
+execute IA (6, 229020085, 'Gibran Andres', 'Robledo', 'Barron', 'AUTOMOTRICES', '2SA11', 2, 'D', 86);
+execute IA (7, 219020038, 'Arturo Natanael', 'Serrano', 'Galindo', 'AUTOMOTRICES', '4SA11', 4, 'E', 76);
+execute IA (8, 222006600, 'Misael', 'García', 'Galicia', 'AUTOMOTRICES', '2SA11', 2, 'D', 87);
+execute IA (9, 229020043, 'Angel', 'Santillan', 'Coria', 'AUTOMOTRICES', '2SA11', 2, 'D', 80);
+execute IA (10, 224020006, 'Rafael Isaac', 'Alvarez', 'alcala', 'AUTOMOTRICES', '2SA11', 2, 'D', 84);
+
+execute IA (11, 193020111, 'José Raúl', 'Neri', 'Jiménez', 'INDUSTRIAL', '8I12', 8, 'F', 84);
+execute IA (12, 223020023, 'Barrón', 'Mora', 'Isrrael', 'INDUSTRIAL', '2I11', 2, 'E', 85);
+execute IA (13, 223020004, 'Ricardo', 'Juárez', 'Arrieta', 'INDUSTRIAL', '2I11', 2, 'E', 85);
+execute IA (14, 223020008, 'Jonathan', 'Ramírez', 'Islas', 'INDUSTRIAL', '2I11', 2, 'E', 89);
+execute IA (15, 183010096, 'Erik Mauricio', 'Sanchez', 'Cruz', 'INDUSTRIAL', '8I12', 8, 'F', 80);
+execute IA (16, 223020028, 'Ivan Yael', 'Mendoza', 'Xihuilt', 'INDUSTRIAL', '2I11', 2, 'E', 87);
+execute IA (17, 213010021, 'Emmanuel', 'López', 'Nicolás', 'INDUSTRIAL', '4I11', 4, 'F', 93);
+execute IA (18, 193020078, 'Jeny Guadalupe', 'Cruz', 'Leal', 'INDUSTRIAL', '6I12', 6, 'F', 82);
+execute IA (19, 203020077, 'Eduardo Jesús', 'Garcia', 'Ferreira', 'INDUSTRIAL', '6I12', 6, 'E', 83);
+execute IA (20, 102010014, 'Juan de Dios', 'Sánchez', 'Durán', 'INDUSTRIAL', '7I11', 7, 'F', 95);
+
+execute IA (21, 201020065, 'Jonathan', 'Duran', 'Ildefonso', 'CONTABILIDAD', '6C11', 6, 'I', 78);
+execute IA (22, 201020023, 'Luis armando', 'Díaz ', 'Islas', 'CONTABILIDAD', '6c11', 6, 'I', 82);
+execute IA (23, 201020020, 'Karen', 'Alvarado', 'Luna', 'CONTABILIDAD', '6C11', 6, 'I', 85);
+execute IA (24, 201020058, 'Silvia Marian', 'Rodríguez', 'Villa', 'CONTABILIDAD', '6C21', 6, 'I', 86);
+execute IA (25, 201020017, 'Ana Cristy', 'Alfaro', 'De Jesus', 'CONTABILIDAD', '6C21', 6, 'I', 82);
+execute IA (26, 201020034, 'Carlos Alberto', 'Largo', 'Camacho', 'CONTABILIDAD', '6C21', 6, 'I', 80);
+execute IA (27, 221020042, 'Gerardo Iván', 'Ceron', 'Ramírez', 'CONTABILIDAD', '2C11', 2, 'I', 92);
+execute IA (28, 221020073, 'Vicente Alejandro', 'Angel', 'Luna', 'CONTABILIDAD', '2C11', 2, 'I', 95);
+execute IA (29, 221020022, 'Jonathan', 'De la cruz', 'Rendón', 'CONTABILIDAD', '2C11', 2, 'I', 92);
+execute IA (30, 201020074, 'Evelin', 'Cruz', 'Herrera', 'CONTABILIDAD', '6C11', 6, 'I', 90);
+
+execute IA (31, 215020014, 'Erick alejandro', 'Martinez', 'Ordaz', 'ENERGIAS RENOVABLES', '2ER11', 2, 'I', 70);
+execute IA (32, 215020003, 'Alexis', 'Carbajal', 'Gómez', 'ENERGIAS RENOVABLES', '4ER11', 4, 'I', 86);
+execute IA (33, 215020004, 'Monica Valeria', 'Huerta', 'García', 'ENERGIAS RENOVABLES', '4ER11', 4, 'I', 96);
+execute IA (34, 215020002, 'Karen Citlali', 'Arenas', 'Carmona', 'ENERGIAS RENOVABLES', '4ER11', 4, 'I', 94);
+execute IA (35, 215020016, 'Angel Niram', 'López', 'Salazar', 'ENERGIAS RENOVABLES', '4ER11', 4, 'I', 92);
+execute IA (36, 215020017, 'Luis Alfredo', 'Torres', 'Hernández', 'ENERGIAS RENOVABLES', '4ER11', 4, 'I', 83);
+execute IA (37, 225020060, 'Kevin Uriel', 'Rodríguez', 'Aguilar', 'ENERGIAS RENOVABLES', '2ER11', 2, 'I', 94);
+execute IA (38, 215020001, 'Ricardo', 'García', 'López', 'ENERGIAS RENOVABLES', '4ER11', 4, 'I', 86);
+execute IA (39, 205020001, 'Guadalupe', 'Hernández', 'Cruz', 'ENERGIAS RENOVABLES', '6E11', 6, 'I', 83);
+execute IA (40, 195020004, 'Jesús UrieL', 'Valdez', 'Bobadilla', 'ENERGIAS RENOVABLES', '7E11', 7, 'I', 91);
+
+execute IA (41, 220020042, 'Jonathan', 'Covarrubias', 'Toriz', 'GASTRONOMIA', '2G11', 2, 'C', 83);
+execute IA (42, 220020034, 'Victor Hugo', 'Centeno', 'García', 'GASTRONOMIA', '2G11', 2, 'C', 89);
+execute IA (43, 210010034, 'Denisse Elizabeth', 'Guzmán', 'Godínez', 'GASTRONOMIA', '5G11', 5, 'B', 80);
+execute IA (44, 200020046, 'Alexander', 'Aguilar', 'Velazquez', 'GASTRONOMIA', '6G11', 6, 'D', 91);
+execute IA (45, 200020008, 'Ariana Yamily', 'Sandoval', 'Torres', 'GASTRONOMIA', '6G11', 6, 'D', 95);
+execute IA (46, 220020151, 'Andrea', 'Pacheco', 'Galindo', 'GASTRONOMIA', '2G11', 2, 'C', 93);
+execute IA (47, 220020210, 'Kevin', 'Gonzales', 'Godinez', 'GASTRONOMIA', '6G11', 6, 'D', 89);
+execute IA (48, 200020110, 'Kevin Aron', 'Juarez', 'Juarez', 'GASTRONOMIA', '6G11', 6, 'D', 81);
+execute IA (49, 220020040, 'Carlos Yael', 'Jimenez', 'Chirino', 'GASTRONOMIA', '2G22', 2, 'C', 86);
+execute IA (50, 230010037, 'Angel Guadalupe', 'Vazquez', 'Castillo', 'GASTRONOMIA', '2G21', 1, 'D', 78);
+
+execute IA (51, 224020036, 'Luis Orlando', 'Rojas', 'Limón', 'AMBIENTAL', '2A11', 2, 'H', 86);
+execute IA (52, 224010003, 'Miguel Angel', 'García', 'Huerta', 'AMBIENTAL', '3A11', 3, 'E', 84);
+execute IA (53, 224010008, 'Brenda', 'Montiel', 'Juarez', 'AMBIENTAL', '3A11', 3, 'H', 82);
+execute IA (54, 214020017, 'Kareini', 'Domínguez', 'Samano', 'AMBIENTAL', '3A11', 3, 'A', 80);
+execute IA (55, 224010006, 'Brayan Isaac', 'Platero', 'Dominguez', 'AMBIENTAL', '3A11', 3, 'H', 84);
+execute IA (56, 224010001, 'Cecilia', 'Abad', 'Ramos', 'AMBIENTAL', '3A11', 3, 'H', 73);
+execute IA (57, 224010010, 'Adalid', 'Arguello', 'Carretero', 'AMBIENTAL', '3A11', 3, 'H', 86);
+execute IA (58, 224010004, 'Diana Abigail', 'Montes', 'Hernández', 'AMBIENTAL', '3A11', 3, 'E', 90);
+execute IA (59, 224010007, 'Casandra', 'Victoria', 'Reyes', 'AMBIENTAL', '3A11', 3, 'H', 93);
+execute IA (60, 214020146, 'Kate Leslie', 'De la rosa', 'Chavez', 'AMBIENTAL', '8A12', 8, 'H', 80);
+
+execute IA (61, 207010011, 'Dulce Maria', 'Ortiz', 'Reyes', 'TICS', '7T11', 7, 'E', 91);
+execute IA (62, 207010014, 'Pamela', 'Perez', 'Ayala', 'TICS', '7T11', 7, 'E', 88);
+execute IA (63, 207010006, 'Angel Gabriel', 'Hernández', 'Garcia', 'TICS', '7T11', 7, 'E', 93);
+execute IA (64, 217010003, 'Pablo Uriel', 'Paz', 'Zuñiga', 'TICS', '5t11', 5, 'E', 88);
+execute IA (65, 197020011, 'Paul', 'Torres', 'Aguillon', 'TICS', '8T11', 8, 'E', 90);
+execute IA (66, 197020004, ' Mauricio', 'Lara', 'Jiménez', 'TICS', '8T11', 8, 'E', 92);
+execute IA (67, 197020009, 'jair abinadar', 'montalvo', 'rivera', 'TICS', '8T11', 8, 'E', 94);
+execute IA (68, 197020020, 'Christian Alexis', 'Hernández', 'Padilla', 'TICS', '8T11', 8, 'E', 92);
+execute IA (69, 197020015, 'Daniel', 'Ramirez', 'Romero', 'TICS', '8T11', 8, 'E', 80);
+execute IA (70, 227022001, 'Jonatan', 'Salvador', 'Martínez', 'TICS', '3T11', 3, 'E', 72);
+
+execute IA (71, 222020050, 'Lesly Karla', 'Espindola', 'Barrera', 'ADMINISTRACION', '2AD11', 2, 'D', 90);
+execute IA (72, 202020101, 'Hector Enrique', 'Megana', 'Quesada', 'ADMINISTRACION', '6AD12', 6, 'D', 87);
+execute IA (73, 212020059, 'Karla Michelle', 'Hernandez', 'Orozco', 'ADMINISTRACION', '4AD12', 4, 'D', 80);
+execute IA (74, 222010001, 'Sandra Lizbeth', 'Arrieta', 'Torales', 'ADMINISTRACION', '3AD11', 3, 'D', 95);
+execute IA (75, 222010012, 'Leonardo', 'Lobaton', 'Vazquez', 'ADMINISTRACION', '3AD11', 3, 'D', 87);
+execute IA (76, 220010014, 'Juan Sebastian', 'Marin', 'Robles', 'ADMINISTRACION', '3AD11', 3, 'D', 80);
+execute IA (77, 192020028, 'Itzel', 'Montalvo', 'Arano', 'ADMINISTRACION', '5AD11', 5, 'D', 83);
+execute IA (78, 192010026, 'Albertossi De Jesus', 'Landeros', 'Gomes', 'ADMINISTRACION', '8AD11', 8, 'E', 80);
+execute IA (79, 202020082, 'Blanca Flor', 'Albarran', 'Flor', 'ADMINISTRACION', '6AD12', 6, 'D', 90);
+execute IA (80, 202020091, 'Mariana Yaquelin', 'Becerra', 'Flores', 'ADMINISTRACION', '6AD12', 6, 'D', 87);
+
+execute IA (81, 206020005, 'Fernanda', 'Morales', 'Lara', 'SISTEMAS COMPUTACIONALES', '6S12', 6, 'B', 87);
+execute IA (82, 206020039, 'Francelia Sharbat', 'Yescas', 'Bueno', 'SISTEMAS COMPUTACIONALES', '6S12', 6, 'B', 95);
+execute IA (83, 206020008, 'Evelin Lizet', 'Cruz', 'Martínez', 'SISTEMAS COMPUTACIONALES', '6S12', 6, 'B', 91);
+execute IA (84, 206020047, 'Ariana Estefania', 'Rodriguez', 'Monroy', 'SISTEMAS COMPUTACIONALES', '6S12', 6, 'B', 90);
+execute IA (85, 219020019, 'Uriel', 'Mendoza', 'Loza', 'SISTEMAS COMPUTACIONALES', '3S11', 3, 'B', 70);
+execute IA (86, 206010028, 'Cristian Alejandro', 'Romero', 'Rojano', 'SISTEMAS COMPUTACIONALES', '7S11', 7, 'B', 93);
+execute IA (87, 206020028, 'Brayan', 'Rodríguez', 'Rodríguez', 'SISTEMAS COMPUTACIONALES', '6S11', 6, 'A', 94);
+execute IA (88, 216020086, 'Alexis', 'Gomez', 'Medina', 'SISTEMAS COMPUTACIONALES', '3S11', 3, 'B', 80);
+execute IA (89, 206020014, 'Luis Alfredo', 'Guzmán', 'Collado', 'SISTEMAS COMPUTACIONALES', '6S11', 6, 'A', 70);
+execute IA (90, 186010117, 'Angel Rafael', 'Mercado', 'Martinez', 'SISTEMAS COMPUTACIONALES', '4S21', 4, 'A', 83);
+
+/*CREAMOS LA TABLA DE AUTOMOTRICES*/
+CREATE TABLE AUTO(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE AUTOMOTRICES*/
+create or replace procedure A_AUTO
+as
+begin
+insert into AUTO (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'AUTOMOTRICES';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_AUTO O AUTO*
+execute A_AUTO;
+select* from AUTO;
+delete from AUTO;
+
+/*CREAMOS LA TABLA DE INDUSTRIAL*/
+CREATE TABLE IND(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE INDUSTRIAL*/
+create or replace procedure A_IND
+as
+begin
+insert into IND (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'INDUSTRIAL';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_IND O IND*
+execute A_IND;
+select* from IND;
+delete from IND;
+
+/*CREAMOS LA TABLA DE CONTADOR*/
+CREATE TABLE CONT(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE CONTADOR*/
+create or replace procedure A_CONT
+as
+begin
+insert into CONT (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'CONTABILIDAD';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_CONT O CONT*
+execute A_CONT;
+select* from CONT;
+delete from CONT;
+
+/*CREAMOS LA TABLA DE ENERGIAS RENOVABLES*/
+CREATE TABLE ER(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE ENERGIAS RENOVABLES*/
+create or replace procedure A_ER
+as
+begin
+insert into ER (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'ENERGIAS RENOVABLES';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_ER O ER*
+execute A_ER;
+select* from ER;
+delete from ER;
+
+/*CREAMOS LA TABLA DE GASTRONOMIA*/
+CREATE TABLE G(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE GASTRONOMIA*/
+create or replace procedure A_G
+as
+begin
+insert into G (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'GASTRONOMIA';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_G O G*
+execute A_G;
+select* from G;
+delete from G;
+
+/*CREAMOS LA TABLA DE AMBIENTAL*/
+CREATE TABLE AMB(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE AMBIENTAL*/
+create or replace procedure A_AMB
+as
+begin
+insert into AMB (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'AMBIENTAL';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_AMB O AMB*
+execute A_AMB;
+select * from AMB;
+delete from AMB;
+
+/*CREAMOS LA TABLA DE TIC´S*/
+CREATE TABLE TICS(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE TICS*/ 
+create or replace procedure A_TICS
+as
+begin
+insert into TICS (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'TICS';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_TICS O TICS*
+execute A_TICS;
+select* from TICS;
+delete from TICS;
+
+/*CREAMOS LA TABLA DE ADMINISTRACION*/
+CREATE TABLE ADM(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE ADMINISTRACION*/
+create or replace procedure A_ADM
+as
+begin
+insert into ADM (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'ADMINISTRACION';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_ADM O ADM*
+execute A_ADM;
+select* from ADM;
+delete from ADM;
+
+/*CREAMOS LA TABLA DE SISTEMAS*/
+CREATE TABLE ISC(
+ID NUMBER(20),
+MATRICULA NUMBER (30),
+NOMBRE VARCHAR2 (30),
+APELLIDOS VARCHAR2 (30),
+GRUPO VARCHAR2 (30),
+EDIFICIO VARCHAR2 (30),
+ );
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE SISTEMAS*/ 
+create or replace procedure A_ISC
+as
+begin
+insert into ISC (ID, MATRICULA, NOMBRE, APELLIDOS, GRUPO, EDIFICIO)
+select ID, MATRICULA, NOMBRE, APELLIDO_P | | ' ' | |  APELLIDO_M, GRUPO, EDIFICIO from ALUMNOS
+where Carrera = 'SISTEMAS COMPUTACIONALES';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA A_ISC O ISC*/
+execute A_ISC;
+select * from ISC;
+delete from ISC;
+
+
+
+/*CREAMOS UNA TABLA DE PROFESORES CON LOS DATOS SOLICITADOS*/
+CREATE TABLE PROFESORES(
+ID NUMBER(20),
+PRIMARY KEY (id),
+NUM_EMPLEADO NUMBER (30) UNIQUE,
+NOMBRE VARCHAR2 (30) NOT NULL,
+APELLIDO_P VARCHAR2 (30) NOT NULL,
+APELLIDO_M VARCHAR2 (30) NOT NULL,
+CARRERAS_IMPARTIDAS VARCHAR2 (30) NOT NULL,
+NOMBRE_CLASES VARCHAR2 (30) NOT NULL,
+GRUPOS VARCHAR2 (30) NOT NULL
+);
+
+/*PODEMOS SELECCIONAR VER LA TABLA O BORRARLA*/
+select * from PROFESORES;
+delete from PROFESORES;
+
+/*AQUI CREAMOS UNA FUNCION CON LOS DATOS QUE SOLICITAMOS*/
+create or replace procedure IP
+(M_ID IN NUMBER DEFAULT 0, M_NUM_EMPLEADO IN NUMBER DEFAULT 0, M_NOMBRE IN VARCHAR2 DEFAULT 'PROFESOR', M_APELLIDO_P IN VARCHAR2 DEFAULT 'APELLIDO_P', 
+ M_APELLIDO_M IN VARCHAR2 DEFAULT 'APELLIDO_M', M_CARRERAS_IMPARTIDAS IN VARCHAR2 DEFAULT 'CARRERA', M_NOMBRE_CLASES IN VARCHAR2 DEFAULT 'CLASE', M_GRUPOS IN VARCHAR2 DEFAULT 'GRUPOS')
+ as 
+ begin 
+ insert into PROFESORES values (M_ID, M_NUM_EMPLEADO, M_NOMBRE, M_APELLIDO_P, M_APELLIDO_M, M_CARRERAS_IMPARTIDAS, M_NOMBRE_CLASES, M_GRUPOS);
+ end;
+
+/*AQUI EMPEZAMOS A INGRESAR LOS DATOS DE LOS 27 PROFESORES*/
+execute IP (1, 918, 'Victor Manuel', 'Fuentes', 'Olivares', 'AUTOMOTRICES', 'Análisis de circuitos eléctricos', '4SA11');
+execute IP (2, 918, 'Victor Manuel', 'Fuentes', 'Olivares', 'ENERGIAS RENOVABLES', 'Automatismo', '9E11');
+execute IP (3, 918, 'Victor Manuel', 'Fuentes', 'Olivares', 'ENERGIAS RENOVABLES', 'Circuitos eléctricos', '4E11');
+execute IP (4, 918, 'Victor Manuel', 'Fuentes', 'Olivares', 'ENERGIAS RENOVABLES', 'Instrumentación', '7E11');
+execute IP (5, 918, 'Victor Manuel', 'Fuentes', 'Olivares', 'ENERGIAS RENOVABLES', 'Instalaciones eléctricas', '6E11');
+execute IP (6, 918, 'Victor Manuel', 'Fuentes', 'Olivares', 'ENERGIAS RENOVABLES', 'Máquinas hidráulicas', '6E11');
+execute IP (7, 918, 'Victor Manuel', 'Fuentes', 'Olivares', 'ENERGIAS RENOVABLES', 'Gestión empresarial', '8E11');
+
+execute IP (8, 913, 'Jose', 'Perez', 'Callejas', 'AUTOMOTRICES', 'Calculo integral', '2SA21');
+execute IP (9, 913, 'Jose', 'Perez', 'Callejas', 'AUTOMOTRICES', 'Mecánica de fluidos', '4SA11');
+execute IP (10, 913, 'Jose', 'Perez', 'Callejas', 'ENERGIAS RENOVABLES', 'Refrigeracion de aire acondicionado', '6E11');
+
+execute IP (11, 600, 'Antonio', 'Palafox', 'Castañeda', 'CONTABILIDAD', 'Tecnología empleada en la gestión empresarial', '8C11');
+execute IP (12, 600, 'Antonio', 'Palafox', 'Castañeda', 'CONTABILIDAD', 'Administración estratégica', '6C11');
+execute IP (13, 600, 'Antonio', 'Palafox', 'Castañeda', 'CONTABILIDAD', 'Seminario de contaduría', '7C11');
+execute IP (14, 600, 'Antonio', 'Palafox', 'Castañeda', 'CONTABILIDAD', 'Administración de la producción de operaciones', '5C11');
+
+
+execute IP (15,348, 'Jose Luis', 'Villareal', 'Lopez', 'TICS', 'Analisis de señales y sistemas de comunicación', '5T11');
+execute IP (16,348, 'Jose Luis', 'Villareal', 'Lopez', 'TICS', 'Electricidad y Magnetismo', '3T11');
+execute IP (17,348, 'Jose Luis', 'Villareal', 'Lopez', 'TICS', 'Telecomunicaciones', '6T11');
+execute IP (18,348, 'Jose Luis', 'Villareal', 'Lopez', 'TICS', 'Administración y Seguridad de redes', '8T11');
+execute IP (19,348, 'Jose Luis', 'Villareal', 'Lopez', 'TICS', 'Administración y Seguridad de redes', '8T21');
+
+execute IP (20, 212, 'Gustavo Moises', 'Romero', 'Gonzalez','SISTEMAS COMPUTACIONALES', 'Sistemas Operativos', '5S11');
+execute IP (21, 212, 'Gustavo Moises', 'Romero', 'Gonzalez', 'SISTEMAS COMPUTACIONALES', 'Taller de Sistemas Operativos', '6S11');
+execute IP (22, 212, 'Gustavo Moises', 'Romero', 'Gonzalez', 'SISTEMAS COMPUTACIONALES', 'Taller de Sistemas Operativos', '6S12');
+execute IP (23, 212, 'Gustavo Moises', 'Romero', 'Gonzalez', 'SISTEMAS COMPUTACIONALES', 'Taller de Sistemas Operativos', '6S21');
+execute IP (24, 212, 'Gustavo Moises', 'Romero', 'Gonzalez', 'TICS', 'Bases de Datos Distribuidas', '5T11');
+execute IP (25, 212, 'Gustavo Moises', 'Romero', 'Gonzalez', 'TICS', 'Sistemas Operativos 1', '6T11');
+execute IP (26, 212, 'Gustavo Moises', 'Romero', 'Gonzalez', 'TICS', 'Sistemas Operativos 2', '7T11');
+
+execute IP (27, 720, 'Monserrat', 'Hernández', 'Flores', 'GASTRONOMIA', 'Cocina internacional 1', '6G11');
+execute IP (28, 720, 'Monserrat', 'Hernández', 'Flores', 'GASTRONOMIA', 'Cocina internacional 1', '6G21');
+execute IP (29, 720, 'Monserrat', 'Hernández', 'Flores', 'GASTRONOMIA', 'Cocina internacional 1', '6G22');
+execute IP (30, 720, 'Monserrat', 'Hernández', 'Flores', 'GASTRONOMIA', 'Cultura y Patrimonio', '2G22');
+execute IP (31, 720, 'Monserrat', 'Hernández', 'Flores', 'GASTRONOMIA', 'Cultura y Patrimonio', '2G21');
+
+execute IP (32, 173, 'Silvino', 'Perez','Alvarez', 'CONTABILIDAD', 'Costos históricos', '4C21');
+execute IP (33, 173, 'Silvino', 'Perez','Alvarez', 'CONTABILIDAD', 'Impuestos predeterminados', '6C21');
+execute IP (34, 173, 'Silvino', 'Perez','Alvarez', 'CONTABILIDAD', 'Planeación', '7C11');
+
+execute IP (33, 188, 'Luis Israel', 'Guerrero', 'Lucio', 'GASTRONOMIA', 'Microbiología de los alimentos', '1G11');
+execute IP (34, 188, 'Luis Israel', 'Guerrero', 'Lucio', 'GASTRONOMIA', 'Microbiología de los alimentos', '1G21');
+execute IP (35, 188, 'Luis Israel', 'Guerrero', 'Lucio', 'GASTRONOMIA', 'Quimica de los alimentos', '3G11');
+
+execute IP (36, 630, 'Marco', 'Mejia', 'Villalpando', 'AMBIENTAL', 'Probabilidad y Estadística Ambiental', '2A11');
+execute IP (37, 630, 'Marco', 'Mejia', 'Villalpando', 'AMBIENTAL', 'Producción más limpia', '8A11');
+execute IP (38, 630, 'Marco', 'Mejia', 'Villalpando', 'AMBIENTAL', 'Producción más limpia', '8A12'); 
+execute IP (39, 630, 'Marco', 'Mejia', 'Villalpando', 'AMBIENTAL', 'Residuos Valorisables', '8A11');
+execute IP (40, 630, 'Marco', 'Mejia', 'Villalpando', 'AMBIENTAL', 'Residuos Valorisables', '8A12');
+execute IP (41, 630, 'Marco', 'Mejia', 'Villalpando', 'AMBIENTAL', 'Toxicología Am biental', '5A11');
+execute IP (42, 630, 'Marco', 'Mejia', 'Villalpando', 'AMBIENTAL', 'Biomquimica', '3A11');
+
+execute IP (43, 415, 'Juan Carlos', 'Martinez', 'Hernandez', 'ENERGIAS RENOVABLES', 'Sistemas termicos', '6E11');
+execute IP (44, 415, 'Juan Carlos', 'Martinez', 'Hernandez', 'ENERGIAS RENOVABLES', 'Termodinamica', '4E11');
+execute IP (45, 415, 'Juan Carlos', 'Martinez', 'Hernandez', 'ENERGIAS RENOVABLES', 'Macromoleculas', '8E11');
+
+execute IP (46, 147, 'Gerardo', 'Nava','Hernandez', 'SISTEMAS COMPUTACIONALES', 'Graficación', '5S11');
+execute IP (47, 147, 'Gerardo', 'Nava','Hernandez', 'SISTEMAS COMPUTACIONALES', 'Lenguajes de Interfaz', '6S11');
+execute IP (48, 147, 'Gerardo', 'Nava','Hernandez', 'SISTEMAS COMPUTACIONALES', 'Lenguajes de Interfaz', '6S12');
+execute IP (49, 147, 'Gerardo', 'Nava','Hernandez', 'SISTEMAS COMPUTACIONALES', 'Lenguajes de Interfaz', '6S21');
+
+execute IP (50, 651, 'Leobardo', 'Morales', 'Ruiz', 'AUTOMOTRICES', 'Fundamentos de dibujo', '1SA11');
+execute IP (51, 651, 'Leobardo', 'Morales', 'Ruiz', 'AUTOMOTRICES', 'Tecnología y comportamiento de materiales', '2SA21');
+execute IP (52, 651, 'Leobardo', 'Morales', 'Ruiz', 'AUTOMOTRICES', 'Estática mecánica de materiales', '3SA11');  
+execute IP (53, 651, 'Leobardo', 'Morales', 'Ruiz', 'AUTOMOTRICES', 'Diseño de elemento de máquinas', '4SA11');
+
+execute IP (54, 697, 'Juan Manuel', 'Estrada', 'Basurto', 'INDUSTRIAL', 'Dibujo industrial', '1I11');
+execute IP (55, 697, 'Juan Manuel', 'Estrada', 'Basurto', 'INDUSTRIAL', 'Planeación y diseño de las instalaciones', '7I11');
+execute IP (56, 697, 'Juan Manuel', 'Estrada', 'Basurto', 'INDUSTRIAL', 'Diseño asistido por ordenador', '6I21');
+execute IP (57, 697, 'Juan Manuel', 'Estrada', 'Basurto', 'AUTOMOTRICES', 'Manufactura para los procesos de elementos automotrices ', '3SA11');
+execute IP (58, 697, 'Juan Manuel', 'Estrada', 'Basurto', 'INDUSTRIAL', 'Metrología', '8I11');
+execute IP (59, 697, 'Juan Manuel', 'Estrada', 'Basurto', 'AUTOMOTRICES', 'Tecnología y comportamiento de los materiales', '2SA11');
+
+execute IP (60, 681, 'Francisco Raul', 'Salvador', 'Ginez', 'SISTEMAS COMPUTACIONALES', 'Redes de Computadoras', '6S11');
+execute IP (61, 681, 'Francisco Raul', 'Salvador', 'Ginez', 'SISTEMAS COMPUTACIONALES', 'Redes de Computadoras', '6S12');
+execute IP (62, 681, 'Francisco Raul', 'Salvador', 'Ginez', 'SISTEMAS COMPUTACIONALES', 'Conmutación y Enrutamiento de Computadoras', '7S11');
+
+execute IP (63, 695, 'Minandro', 'Camarillo', 'Cadena', 'AMBIENTAL', 'Calculo Diferencial', '1A11');
+execute IP (64, 695, 'Minandro', 'Camarillo', 'Cadena', 'AMBIENTAL', 'Calculo Integral', '2A11');
+execute IP (65, 695, 'Minandro', 'Camarillo', 'Cadena', 'AMBIENTAL', 'Calculo Vectorial', '3A11');
+execute IP (66, 695, 'Minandro', 'Camarillo', 'Cadena', 'AMBIENTAL', 'Ecuaciones Diferenciales', '4A11');
+
+execute IP (67, 243, 'Albertossi', 'Landeros', 'Rojas', 'SISTEMAS COMPUTACIONALES', 'Principios Electronicos', '4S11');
+execute IP (68, 243, 'Albertossi', 'Landeros', 'Rojas', 'SISTEMAS COMPUTACIONALES', 'Principios Electronicos', '4S12');
+execute IP (69, 243, 'Albertossi', 'Landeros', 'Rojas', 'SISTEMAS COMPUTACIONALES', 'Principios Electronicos', '4S21');
+execute IP (70, 243, 'Albertossi', 'Landeros', 'Rojas', 'SISTEMAS COMPUTACIONALES', 'Sistemas Programables', '7S11');
+execute IP (71, 243, 'Albertossi', 'Landeros', 'Rojas', 'TICS', 'Circuitos Eléctricos y Eléctronicos', '4T11');
+
+execute IP (72, 415, 'Juan Carlos', 'Martínez', 'Hernández', 'ENERGIAS RENOVABLES', 'Sistemas Térmicos', '6E11');
+execute IP (73, 415, 'Juan Carlos', 'Martínez', 'Hernández', 'ENERGIAS RENOVABLES', 'Termodinámica', '4E11');
+execute IP (74, 415, 'Juan Carlos', 'Martínez', 'Hernández', 'ENERGIAS RENOVABLES', 'Macro moléculas', '7E11');
+
+execute IP (75, 477, 'Victor', 'Duarte', 'Zaragoza', 'AMBIENTAL', 'Fundamentos de Investigación', '7A11'); 
+execute IP (76, 477, 'Victor', 'Duarte', 'Zaragoza', 'AMBIENTAL', 'Taller de investigación 1', '6A11');
+execute IP (77, 477, 'Victor', 'Duarte', 'Zaragoza', 'AMBIENTAL', 'Manejo Integral del Suelo ', '8A11');
+execute IP (78, 477, 'Victor', 'Duarte', 'Zaragoza', 'AMBIENTAL', 'Remediación del suelo', '7A11');
+
+execute IP (79, 756, 'Cesar Michael', 'Gonzalez', 'Serrano', 'ADMINISTRACION', 'Adminstración Financiera', '6AD12');
+execute IP (80, 756, 'Cesar Michael', 'Gonzalez', 'Serrano', 'ADMINISTRACION', 'Economia', '4AD11');
+execute IP (81, 756, 'Cesar Michael', 'Gonzalez', 'Serrano', 'ADMINISTRACION', 'Administracion de la Producción', '6AD11');
+execute IP (82, 756, 'Cesar Michael', 'Gonzalez', 'Serrano', 'ADMINISTRACION', 'Finanzas Etrategicas para MIPYMES', '8AD11');
+
+execute IP (83, 928, 'Samantha', 'Paez', 'Rivera', 'ADMINISTRACION', 'Taller de ética', '2AD11');
+execute IP (84, 928, 'Samantha', 'Paez', 'Rivera', 'INDUSTRIAL', 'Taller de herramientas intelectuales', '1I11');
+execute IP (85, 928, 'Samantha', 'Paez', 'Rivera', 'ADMINISTRACION', 'Taller de investigación I', '6AD12');
+
+execute IP (86, 209, 'Maria Cristina', 'Rodriguez', 'Mendias', 'SISTEMAS COMPUTACIONALES', 'Investigación de Operaciones', '3S11');
+execute IP (87, 209, 'Maria Cristina', 'Rodriguez', 'Mendias', 'SISTEMAS COMPUTACIONALES', 'Métodos Numericos', '4S11');
+execute IP (88, 209, 'Maria Cristina', 'Rodriguez', 'Mendias', 'SISTEMAS COMPUTACIONALES', 'Métodos Numericos', '4S12');
+execute IP (89, 209, 'Maria Cristina', 'Rodriguez', 'Mendias', 'SISTEMAS COMPUTACIONALES', 'Métodos Numericos', '4S21');
+execute IP (90, 209, 'Maria Cristina', 'Rodriguez', 'Mendias', 'SISTEMAS COMPUTACIONALES', 'Simulación', '4S11');
+execute IP (91, 209, 'Maria Cristina', 'Rodriguez', 'Mendias', 'SISTEMAS COMPUTACIONALES', 'Simulación', '4S12');
+execute IP (92, 209, 'Maria Cristina', 'Rodriguez', 'Mendias', 'SISTEMAS COMPUTACIONALES', 'Simulación', '4S21');
+
+execute IP (93, 530, 'José Luis', 'Rocha', 'Lijandro', 'CONTABILIDAD', 'Análisis de estados financieros', '4C12');
+execute IP (94, 530, 'José Luis', 'Rocha', 'Lijandro', 'CONTABILIDAD', 'Contabilidad internacional', '6C11');
+execute IP (95, 530, 'José Luis', 'Rocha', 'Lijandro', 'CONTABILIDAD', 'Gestión empresarial del factor humano', '8C12');
+execute IP (96, 530, 'José Luis', 'Rocha', 'Lijandro', 'CONTABILIDAD', 'Contabilidad financiera I', '2C11');
+execute IP (97, 530, 'José Luis', 'Rocha', 'Lijandro', 'CONTABILIDAD', 'Contabilidad financiera II', '3C11');
+execute IP (98, 530, 'José Luis', 'Rocha', 'Lijandro', 'CONTABILIDAD', 'Costos industriales', '3C11');
+
+execute IP (99, 694, 'Beatriz', 'Cortez', 'Rodríguez', 'ADMINISTRACION', 'Relaciones Publicas', '8AD12');
+execute IP (100, 694, 'Beatriz', 'Cortez', 'Rodríguez', 'ADMINISTRACION', 'Capital Humano', '5AD11');
+execute IP (101, 694, 'Beatriz', 'Cortez', 'Rodríguez', 'ADMINISTRACION', 'Administración de la calidad', '7AD11');
+execute IP (102, 694, 'Beatriz', 'Cortez', 'Rodríguez', 'GASTRONOMIA', 'Dirección de establecimientos de Alimentos y Bebidas', '8G11');
+
+execute IP (103, 873, 'Erika Guadalupe', 'Galicia', 'Herrera', 'AUTOMOTRICES', 'Química aplicada a sistemas automotrices', '1SA11');
+execute IP (104, 873, 'Erika Guadalupe', 'Galicia', 'Herrera', 'INDUSTRIAL', 'Liderazgo', '2I11');
+execute IP (105, 873, 'Erika Guadalupe', 'Galicia', 'Herrera', 'INDUSTRIAL', 'Fundamentos de investigación', '1I11');
+execute IP (106, 873, 'Erika Guadalupe', 'Galicia', 'Herrera', 'TICS', 'Desarrollo de emprendedores', '6T11');
+
+execute IP (107, 698, 'Alejandro', 'Bustamante', 'Duran', 'GASTRONOMIA', 'Tendencias de la alta repostería', '8G11');
+execute IP (108, 698, 'Alejandro', 'Bustamante', 'Duran', 'GASTRONOMIA', 'Tendencias de la alta repostería', '8G12');
+execute IP (109, 698, 'Alejandro', 'Bustamante', 'Duran', 'GASTRONOMIA', 'Tendencias de la alta repostería', '8G21');
+execute IP (110, 698, 'Alejandro', 'Bustamante', 'Duran', 'GASTRONOMIA', 'Panaderia', '4G21');
+execute IP (111, 698, 'Alejandro', 'Bustamante', 'Duran', 'GASTRONOMIA', 'Introducción a la reposteria', '5G11');
+execute IP (112, 698, 'Alejandro', 'Bustamante', 'Duran', 'GASTRONOMIA', 'Introducción a la reposteria', '5G21');
+
+execute IP (113, 760, 'Oscar Abimael', 'Sanchez', 'De los Santos', 'SISTEMAS COMPUTACIONALES', 'Fundamentos de Base de Datos', '4S11');
+execute IP (114, 760, 'Oscar Abimael', 'Sanchez', 'De los Santos', 'SISTEMAS COMPUTACIONALES', 'Fundamentos de Base de Datos', '4S12');
+execute IP (115, 760, 'Oscar Abimael', 'Sanchez', 'De los Santos', 'SISTEMAS COMPUTACIONALES', 'Fundamentos de Ingenieria de Software', '5S11');
+execute IP (116, 760, 'Oscar Abimael', 'Sanchez', 'De los Santos', 'ADMINISTRACION', 'Aplicaciones empresariales para las MYPYMES', '7AD11');
+execute IP (117, 760, 'Oscar Abimael', 'Sanchez', 'De los Santos', 'TICS', 'Metodologias Agiles', '7T11');
+
+execute IP (118, 64, 'Jorge', 'Garcia', 'Nieva', 'INDUSTRIAL', 'Calculo vectorial', '3I11');
+execute IP (119, 64, 'Jorge', 'Garcia', 'Nieva', 'AUTOMOTRICES', 'Algebra lineal', '2SA11');
+execute IP (120, 64, 'Jorge', 'Garcia', 'Nieva', 'INDUSTRIAL', 'Estadística inferencial I', '4I12');
+execute IP (121, 64, 'Jorge', 'Garcia', 'Nieva', 'INDUSTRIAL', 'Estadística inferencial II', '4I12');
+execute IP (122, 64, 'Jorge', 'Garcia', 'Nieva', 'AUTOMOTRICES', 'Estadística para administración', '3SA11');
+
+/*CREAMOS LA TABLA DE AUTOMOTRICES*/
+CREATE TABLE AUTOMOTRICES(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE AUTOMOTRICES*/
+create or replace procedure P_AUTO
+as
+begin
+insert into AUTOMOTRICES (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'AUTOMOTRICES';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_AUTO O AUTOMOTRICES*
+execute P_AUTO;
+select* from AUTOMOTRICES;
+delete from AUTOMOTRICES;
+
+/*CREAMOS LA TABLA DE INDUSTRIAL*/
+CREATE TABLE INDUSTRIAL(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE INDUSTRIAL*/
+create or replace procedure P_IND
+as
+begin
+insert into INDUSTRIAL (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'INDUSTRIAL';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_IND O INDUSTRIAL*
+execute P_IND;
+select* from INDUSTRIAL;
+delete from INDUSTRIAL;
+
+/*CREAMOS LA TABLA DE CONTADOR*/
+CREATE TABLE CONTADOR(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE CONTADOR*/
+create or replace procedure P_CONT
+as
+begin
+insert into CONTADOR (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'CONTABILIDAD';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_CONT O CONTADOR*
+execute P_CONT;
+select* from CONTADOR;
+delete from CONTADOR;
+
+/*CREAMOS LA TABLA DE ENERGIAS RENOVABLES*/
+CREATE TABLE ENERGIAS(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE ENERGIAS RENOVABLES*/
+create or replace procedure P_ER
+as
+begin
+insert into ENERGIAS (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'ENERGIAS RENOVABLES';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_ER O ENERGIAS*
+execute P_ER;
+select* from ENERGIAS;
+delete from ENERGIAS;
+
+/*CREAMOS LA TABLA DE GASTRONOMIA*/
+CREATE TABLE GASTRONOMIA(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE GASTRONOMIA*/
+create or replace procedure P_G
+as
+begin
+insert into GASTRONOMIA (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'GASTRONOMIA';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_G O GASTRONOMIA*
+execute P_G;
+select* from GASTRONOMIA;
+delete from GASTRONOMIA;
+
+/*CREAMOS LA TABLA DE AMBIENTAL*/
+CREATE TABLE AMBIENTAL(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE AMBIENTAL*/
+create or replace procedure P_AMB
+as
+begin
+insert into AMBIENTAL (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'AMBIENTAL';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_AMB O AMBIENTAL*
+execute P_AMB;
+select * from AMBIENTAL;
+delete from AMBIENTAL;
+
+/*CREAMOS LA TABLA DE TIC´S*/
+CREATE TABLE TIC(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE TICS*/ 
+create or replace procedure P_TICS
+as
+begin
+insert into TIC (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'TICS';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_TICS O TIC*
+execute P_TICS;
+select* from TIC;
+delete from TIC;
+
+/*CREAMOS LA TABLA DE ADMINISTRACION*/
+CREATE TABLE ADMINISTRACION(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE ADMINISTRACION*/
+create or replace procedure P_ADM
+as
+begin
+insert into ADMINISTRACION (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'ADMINISTRACION';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_ADM O ADMINISTRACION*
+execute P_ADM;
+select* from ADMINISTRACION;
+delete from ADMINISTRACION;
+
+/*CREAMOS LA TABLA DE SISTEMAS*/
+CREATE TABLE SISTEMAS(
+ID NUMBER NOT NULL UNIQUE,
+NUM_EMPLEADO NUMBER (30),
+NOMBRE VARCHAR2 (30),
+CARRERAS_IMPARTIDAS VARCHAR2 (30),
+NOMBRE_CLASES VARCHAR2 (30),
+GRUPOS VARCHAR2 (30) 
+);
+ 
+/*CREAMOS OTRA FUNCION PARA VER SOLO LA CARRERA DE SISTEMAS*/ 
+create or replace procedure P_ISC
+as
+begin
+insert into SISTEMAS (ID, NUM_EMPLEADO, NOMBRE, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS)
+select ID, NUM_EMPLEADO, NOMBRE | |' '| | APELLIDO_P | | ' ' | |  APELLIDO_M, CARRERAS_IMPARTIDAS, NOMBRE_CLASES, GRUPOS  from PROFESORES
+where Carrera = 'SISTEMAS COMPUTACIONALES';
+end;
+
+/*FUNCIONES PARA EJECUTAR, VER O BORRAR LA TABLA P_ISC O SISTEMAS*/
+execute P_ISC;
+select * from SISTEMAS;
+delete from SISTEMAS;
+
+
